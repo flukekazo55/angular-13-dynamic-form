@@ -1,0 +1,8 @@
+<form class="form-group" [formGroup]="formGroup">
+    <!-- LABEL -->
+    <label class="form-label">{{ field.label }}: </label>
+    <!-- TEXTAREA -->
+    <textarea class="form-control" rows="3" [formControlName]="field.fieldName" [class.is-valid]="checkFormValid()"
+        [class.is-invalid]="checkFormInValid()">
+    </textarea>
+</form>

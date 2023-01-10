@@ -7,7 +7,10 @@
 <!-- CHECKBOX -->
 <app-dynamic-checkbox *ngIf="field.type == 'checkbox'" [formGroup]="formGroup" [field]="field">
 </app-dynamic-checkbox>
+<!-- TEXTAREA -->
+<app-dynamic-textarea *ngIf="field.type == 'textarea'" [formGroup]="formGroup" [field]="field">
+</app-dynamic-textarea>
 <!-- INPUT  -->
-<app-dynamic-input *ngIf="!['select', 'radio', 'checkbox'].includes(field.type)" [formGroup]="formGroup"
+<app-dynamic-input *ngIf="!['select', 'radio', 'checkbox', 'textarea'].includes(field.type)" [formGroup]="formGroup"
     [field]="field">
 </app-dynamic-input>
