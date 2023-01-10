@@ -1,0 +1,10 @@
+<form class="mb-2" [formGroup]="formGroup">
+    <div class="form-check">
+        <!-- INPUT -->
+        <input type="checkbox" class="form-check-input" [class.is-valid]="checkFormValid()"
+            [class.is-invalid]="checkFormInValid()" [name]="field.fieldName" [formControlName]="field.fieldName"
+            [value]="field.value">
+        <!-- LABEL -->
+        <label class="form-check-label">{{ field.label }}</label>
+    </div>
+</form>

@@ -1,0 +1,9 @@
+<form [formGroup]="dynamicFormGroup" (ngSubmit)="submitForm()">
+    <ng-container *ngFor="let field of fields">
+        <app-dynamic-field [field]="field"></app-dynamic-field>
+        <app-dynamic-error [fieldName]="field.fieldName"></app-dynamic-error>
+    </ng-container>
+    <button class="btn btn-primary mt-4" type="submit">
+        Submit
+    </button>
+</form>

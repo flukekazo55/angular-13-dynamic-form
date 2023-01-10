@@ -1,0 +1,11 @@
+<h3 class="my-2">{{ field.label }}</h3>
+<form [formGroup]="formGroup">
+    <div class="form-check" *ngFor="let option of field.options">
+        <!-- INPUT -->
+        <input type="radio" class="form-check-input" [class.is-valid]="checkFormValid()"
+            [class.is-invalid]="checkFormInValid()" [name]="field.fieldName" [formControlName]="field.fieldName"
+            [value]="option.value">
+        <!-- LABEL -->
+        <label class="form-check-label">{{ option.label }}</label>
+    </div>
+</form>

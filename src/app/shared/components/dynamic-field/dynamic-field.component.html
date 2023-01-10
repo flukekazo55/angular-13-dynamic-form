@@ -1,0 +1,13 @@
+<!-- DROPDOWN -->
+<app-dynamic-select *ngIf="field.type == 'select'" [formGroup]="formGroup" [field]="field">
+</app-dynamic-select>
+<!-- RADIO CHECKBOX -->
+<app-dynamic-radio *ngIf="field.type == 'radio'" [formGroup]="formGroup" [field]="field">
+</app-dynamic-radio>
+<!-- CHECKBOX -->
+<app-dynamic-checkbox *ngIf="field.type == 'checkbox'" [formGroup]="formGroup" [field]="field">
+</app-dynamic-checkbox>
+<!-- INPUT  -->
+<app-dynamic-input *ngIf="!['select', 'radio', 'checkbox'].includes(field.type)" [formGroup]="formGroup"
+    [field]="field">
+</app-dynamic-input>

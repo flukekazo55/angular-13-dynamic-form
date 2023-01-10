@@ -1,0 +1,7 @@
+<form class="form-group" [formGroup]="formGroup">
+    <!-- LABEL -->
+    <label class="form-label">{{ field.label }}: </label>
+    <!-- INPUT -->
+    <input class="form-control" [type]="field.type" [formControlName]="field.fieldName"
+        [class.is-valid]="checkFormValid()" [class.is-invalid]="checkFormInValid()" />
+</form>

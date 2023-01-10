@@ -1,0 +1,12 @@
+<form [formGroup]="formGroup" class="form-group">
+    <!-- LABEL -->
+    <label class="form-label">{{ field.label }}: </label>
+    <!-- SELECT -->
+    <select class="form-select" [formControlName]="field.fieldName" [class.is-valid]="checkFormValid()"
+        [class.is-invalid]="checkFormInValid()">
+        <!-- OPTION VALUE -->
+        <option *ngFor="let option of field.options" [value]="option.value">
+            {{ option.label }}
+        </option>
+    </select>
+</form>
