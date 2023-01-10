@@ -11,6 +11,7 @@ import { DynamicRadioComponent } from './shared/components/dynamic-field/dynamic
 import { DynamicSelectComponent } from './shared/components/dynamic-field/dynamic-select/dynamic-select.component';
 import { DynamicInputComponent } from './shared/components/dynamic-field/dynamic-input/dynamic-input.component';
 import { DynamicErrorComponent } from './shared/components/dynamic-error/dynamic-error.component';
+import { DynamicTextareaComponent } from './shared/components/dynamic-field/dynamic-textarea/dynamic-textarea.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { DynamicErrorComponent } from './shared/components/dynamic-error/dynamic
     DynamicSelectComponent,
     DynamicInputComponent,
     DynamicErrorComponent,
+    DynamicTextareaComponent,
   ],
   imports: [
     BrowserModule,
