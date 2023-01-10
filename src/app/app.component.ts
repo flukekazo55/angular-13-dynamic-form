@@ -39,7 +39,7 @@ export class AppComponent {
         formControl: formExample.controls['lastname']
       },
       address: {
-        type: "textarea",
+        type: "text",
         label: "Address",
         formControl: formExample.controls['address']
       },
