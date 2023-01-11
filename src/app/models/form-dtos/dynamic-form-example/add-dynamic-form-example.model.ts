@@ -1,8 +1,12 @@
-import { IsNotEmpty, IsNumberString, IsDateString } from 'class-validator-multi-lang';
+import { IsNotEmpty, IsNumberString, IsDateString, Validate } from 'class-validator-multi-lang';
 import { marker } from '@ngneat/transloco-keys-manager/marker';
-import { Expose } from 'class-transformer-global-storage';
+import { Exclude, Expose } from 'class-transformer-global-storage';
+import { TextLength8 } from 'src/app/utils/custom-validators';
 
 export class AddDynamicFormExample {
+    @Validate(TextLength8, {
+        message: marker('')
+    })
     @IsNotEmpty({
         message: marker('FirstName must be not empty')
     })
@@ -56,18 +60,4 @@ export class AddDynamicFormExample {
     })
     @Expose()
     suscriptionType: string;
-
-    constructor(data?: any) {
-        if (data === undefined) {
-            data = {};
-        }
-        this.firstname = data.firstname;
-        this.lastname = data.lastname;
-        this.address = data.address;
-        this.age = data.age;
-        this.birthDay = data.birthDay;
-        this.typeBussiness = data.typeBussiness;
-        this.newsletterIn = data.newsletterIn;
-        this.suscriptionType = data.suscriptionType;
-    }
 }

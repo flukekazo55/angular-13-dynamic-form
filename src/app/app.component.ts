@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { DynamicFormBuilder } from 'ngx-dynamic-form-builder';
+import { DynamicFormBuilder, DynamicFormGroup } from 'ngx-dynamic-form-builder';
+import { IDynamicAdapter } from './models/form-dtos/dynamic-adapter.interface';
 import { AddDynamicFormExample } from './models/form-dtos/dynamic-form-example/add-dynamic-form-example.model';
 
 @Component({
@@ -10,14 +11,15 @@ import { AddDynamicFormExample } from './models/form-dtos/dynamic-form-example/a
 export class AppComponent {
   // DECLARE FORM BUILDER
   fb = new DynamicFormBuilder();
-
   // dynamic model adapt
-  modelAdapt: any;
+  modelAdapt: IDynamicAdapter;
+  // form
+  form: DynamicFormGroup<AddDynamicFormExample>;
 
   constructor() {
     // CREATE FORM
-    let formExample = this.fb.rootFormGroup(AddDynamicFormExample, {
-      firstname: "",
+    this.form = this.fb.rootFormGroup(AddDynamicFormExample, {
+      firstname: "", 
       lastname: "",
       address: "",
       age: "",
@@ -31,32 +33,32 @@ export class AppComponent {
       firstname: {
         type: "text",
         label: "FirstName",
-        formControl: formExample.controls['firstname']
+        formControl: this.form.controls['firstname']
       },
       lastname: {
         type: "text",
         label: "LastName",
-        formControl: formExample.controls['lastname']
+        formControl: this.form.controls['lastname']
       },
       address: {
         type: "textarea",
         label: "Address",
-        formControl: formExample.controls['address']
+        formControl: this.form.controls['address']
       },
       age: {
         type: "text",
         label: "Age",
-        formControl: formExample.controls['age']
+        formControl: this.form.controls['age']
       },
       birthDay: {
         type: "date",
         label: "Birthday",
-        formControl: formExample.controls['birthDay']
+        formControl: this.form.controls['birthDay']
       },
       typeBussiness: {
         label: "Bussines Type",
         type: "radio",
-        formControl: formExample.controls['typeBussiness'],
+        formControl: this.form.controls['typeBussiness'],
         options: [
           {
             label: "Enterprise",
@@ -75,12 +77,12 @@ export class AppComponent {
       newsletterIn: {
         label: "Suscribe to newsletter",
         type: "checkbox",
-        formControl: formExample.controls['newsletterIn'],
+        formControl: this.form.controls['newsletterIn'],
       },
       suscriptionType: {
         label: "Suscription Type",
         type: "select",
-        formControl: formExample.controls['suscriptionType'],
+        formControl: this.form.controls['suscriptionType'],
         options: [
           {
             label: "Select select",
@@ -101,5 +103,6 @@ export class AppComponent {
 
   setFormValue(formValue: any) {
     console.log("setFormValue: " + formValue);
+    console.log(this.form);
   }
 }

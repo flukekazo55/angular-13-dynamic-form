@@ -2,11 +2,12 @@ import { FormControl } from "@angular/forms";
 
 export function getFormControlsFields(formModels: any) {
     let fields = [];
-    const formGroupFields: any = {};
+    // ADAPT VERSION
+    const formGroupFields = {};
     for (const field of Object.keys(formModels)) {
-        const fieldProps = formModels[field];
-        formGroupFields[field] = new FormControl(fieldProps.value);
-        fields.push({ ...fieldProps, fieldName: field });
+      const fieldProps = formModels[field];
+      formGroupFields[field] = formModels[field].formControl;
+      this.fields.push({ ...fieldProps, fieldName: field });
     }
     return formGroupFields;
 }
