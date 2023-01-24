@@ -1,6 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { getFormControlsFields } from 'src/app/utils/form-generate';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -17,15 +16,25 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.buildForm();
-
     this.dynamicFormGroup.valueChanges.subscribe((res) => {
       // DO SOME THING WHEN FORM CHANGE
     })
   }
 
   buildForm() {
-    const formGroupFields = getFormControlsFields(this.model);
+    const formGroupFields = this.getFormControlsFields();
     this.dynamicFormGroup = new FormGroup(formGroupFields);
+  }
+
+  getFormControlsFields() {
+    // ADAPT VERSION
+    const formGroupFields = {};
+    for (const field of Object.keys(this.model)) {
+      const fieldProps = this.model[field];
+      formGroupFields[field] = this.model[field].formControl;
+      this.fields.push({ ...fieldProps, fieldName: field });
+    }
+    return formGroupFields;
   }
 
   submitForm() {
