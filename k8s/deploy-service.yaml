@@ -6,16 +6,16 @@ metadata:
 spec:
   selector:
     matchLabels:
-      app: simple-form #ชื่อของ angular app
+      app: simple-form-jenkins #ชื่อของ angular app
   replicas: 1
   template:
     metadata:
       labels:
-        app: simple-form #ชื่อของ angular app
+        app: simple-form-jenkins #ชื่อของ angular app
     spec:
       containers:
-        - name: simple-form-app #ชื่อของ docker ที่สร้างขึ้นจาก Dockerfile
-          image: angular/simple-form:v2 #ชื่อของ docker images ที่สร้างขึ้นจาก Dockerfile
+        - name: simple-form-jenkins-app #ชื่อของ docker ที่สร้างขึ้นจาก Dockerfile
+          image: angular/simple-form-jenkins:v1 #ชื่อของ docker images ที่สร้างขึ้นจาก Dockerfile
           resources:
             requests:
               cpu: 100m
@@ -30,11 +30,11 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-form-service #ชื่อของ angular app service
+  name: simple-form-jenkins-service #ชื่อของ angular app service
   namespace: default
 spec:
   selector:
-    app: simple-form #ชื่อของ angular app deployment
+    app: simple-form-jenkins #ชื่อของ angular app deployment
   type: NodePort
   ports:
     - protocol: TCP

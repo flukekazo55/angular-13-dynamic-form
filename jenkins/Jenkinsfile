@@ -4,12 +4,12 @@ pipeline {
     stages {
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -f angular/simple-form-jenkins:v1 -f docker/Dockerfile .'
+                sh 'docker build -t angular/simple-form-jenkins:v1 -f docker/Dockerfile .'
             }
         }
         stage('Deploy K8S YAML') {
             steps {
-                sh 'kubectl -f k8s/deploy-service.yaml'
+                sh 'kubectl create -f k8s/deploy-service.yaml'
             }
         }
     }
