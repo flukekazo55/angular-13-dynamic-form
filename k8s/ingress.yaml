@@ -66,7 +66,7 @@ metadata:
   namespace: default
 spec:
   rules: # ส่วนของการกำหนด Rule ให้กับ Ingress
-    - host: "first-pod.example.com" # Hostname ที่จะให้ User เข้าใช้งาน
+    - host: "angular13-simple-form.com" # Hostname ที่จะให้ User เข้าใช้งาน
       http:
         paths:
         - path: / # Path ที่จะให้เข้ามาใช้งาน Pod
