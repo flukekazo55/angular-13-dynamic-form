@@ -48,6 +48,7 @@ metadata:
   name: simple-form-ingress # ชื่อของ Ingress
   namespace: default
 spec:
+  ingressClassName: nginx
   rules: # ส่วนของการกำหนด Rule ให้กับ Ingress
     - host: "angular13-simple-form.com" # Hostname ที่จะให้ User เข้าใช้งาน
       http:
