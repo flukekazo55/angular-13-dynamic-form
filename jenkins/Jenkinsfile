@@ -20,7 +20,8 @@ pipeline {
         stage('Deploy K8S YAML') {
             steps {
                 // sh 'kubectl create -f k8s/deploy-service.yaml'
-                sh 'kubectl create -f k8s/ingress.yaml'
+                // sh 'kubectl create -f k8s/ingress.yaml'
+                sh 'kubectl replace -f k8s/ingress.yaml'
             }
         }
     }
