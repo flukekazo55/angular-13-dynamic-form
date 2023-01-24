@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+
+    stages {
+        // stage('Build Docker Image') {
+        //     steps {
+        //         sh 'docker build -f angular/simple-form'
+        //     }
+        // }
+        // stage('Test') {
+        //     steps {
+        //         echo 'Testing..'
+        //     }
+        // }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying....'
+            }
+        }
+    }
+}
