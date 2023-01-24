@@ -37,22 +37,22 @@ spec:
     protocol: TCP # Protocol
     targetPort: 80 # Port ของ container ที่จะให้ Service นั้นเชื่อมต่อ
   selector: # ส่่วนทที่ใช้ระบุ Label ของ Pod
-    app: simple-form-jenkins # ชื่อ Label ของ Pod ที่จะให้ Service นั้นเชื่อมต่อ
+    app: simple-form-jenkins # ชื่อ Label ของ Pod ที่จะให้ Service นั้นเชื่อมต่อ 
 ---
 apiVersion: networking.k8s.io/v1
-kind: Ingress
+kind: Ingress # ประเภทของ Resource
 metadata:
-  name: simple-form-ingress
+  name: simple-form-ingress # ชื่อของ Ingress
   namespace: default
 spec:
-  rules:
-  - host: angular13-simple-form.com
-    http:
-      paths:
-      - path: /
-        pathType: Prefix
-        backend:
-          service:
-            name: simple-form-jenkins-service
-            port:
-              number: 80
+  rules: # ส่วนของการกำหนด Rule ให้กับ Ingress
+    - host: "first-pod.example.com" # Hostname ที่จะให้ User เข้าใช้งาน
+      http:
+        paths:
+        - path: / # Path ที่จะให้เข้ามาใช้งาน Pod
+          pathType: Prefix # ประเภทของการ Match Path
+          backend: # ส่วนของการระบุ Service ที่จะให้นำทางไปยัง Pod
+            service:
+              name: simple-form-jenkins-service # ชื่อของ Service
+              port:
+                number: 80 #  Port ของ Service
