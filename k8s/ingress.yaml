@@ -1,0 +1,17 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: simple-form-ingress
+  namespace: default
+spec:
+  rules:
+  - host: angular13-simple-form.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: simple-form-jenkins-service
+            port:
+              number: 80
