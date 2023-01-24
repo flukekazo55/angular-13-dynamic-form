@@ -2,7 +2,7 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: simple-form #ชื่อของ angular app
+  name: simple-form-jenkins #ชื่อของ angular app
 spec:
   selector:
     matchLabels:
