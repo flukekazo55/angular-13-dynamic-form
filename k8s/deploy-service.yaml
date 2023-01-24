@@ -1,3 +1,4 @@
+---
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -14,7 +15,7 @@ spec:
     spec:
       containers:
         - name: simple-form-app #ชื่อของ docker ที่สร้างขึ้นจาก Dockerfile
-          image: angular/simple-form:v1 #ชื่อของ docker images ที่สร้างขึ้นจาก Dockerfile
+          image: angular/simple-form:v2 #ชื่อของ docker images ที่สร้างขึ้นจาก Dockerfile
           resources:
             requests:
               cpu: 100m
@@ -25,3 +26,18 @@ spec:
           imagePullPolicy: Never
           ports:
             - containerPort:  80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-form-service #ชื่อของ angular app service
+  namespace: default
+spec:
+  selector:
+    app: simple-form #ชื่อของ angular app deployment
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 31000
