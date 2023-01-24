@@ -30,18 +30,17 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  labels:
-    run: simple-form-jenkins-svc
-  name: simple-form-jenkins-svc
+  name: simple-form-jenkins-service #ชื่อของ angular app service
+  namespace: default
 spec:
-  ports:
-  - port: 80
-    protocol: TCP
-    targetPort: 80
-    nodePort: 30200 # กำหนดหมายเลข NodePort (30000-32767)
   selector:
-    run: simple-form-jenkins
-  type: NodePort # เพิ่มเติมในส่วนของประเภทให้เป็น NodePort
+    app: simple-form-jenkins #ชื่อของ angular app deployment
+  type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+      nodePort: 32000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -57,6 +56,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: simple-form-jenkins-svc
+            name: simple-form-jenkins-service
             port:
               number: 80
