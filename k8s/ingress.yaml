@@ -34,13 +34,12 @@ metadata:
 spec:
   selector:
     app: simple-form-jenkins
-  type: NodePort
+  type: ClusterIP
   ports:
   - name: simple-form-jenkins
     protocol: TCP
     port: 80
     targetPort: 80
-    nodePort: 32000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress # ประเภทของ Resource
