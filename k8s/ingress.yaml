@@ -1,3 +1,17 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-form-jenkins-service #ชื่อของ angular app service
+  namespace: default
+spec:
+  selector:
+    app: simple-form-jenkins #ชื่อของ angular app deployment
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
