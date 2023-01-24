@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: simple-form-jenkins-service #ชื่อของ angular app service
+  name: simple-form-jenkins-ingress-svc #ชื่อของ angular app service
   namespace: default
 spec:
   selector:
@@ -26,6 +26,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: simple-form-jenkins-service
+            name: simple-form-jenkins-ingress-svc
             port:
               number: 80
