@@ -28,23 +28,6 @@ spec:
             - containerPort:  80
 ---
 apiVersion: v1
-kind: Service
-metadata:
-  name: myjob
-  namespace: default
-spec:
-  selector:
-    app: myjob
-  type: ClusterIP
-  ports:
-  - name: myjob
-    protocol: TCP
-    port: 80
-    targetPort: 5000
-    nodePort: 30001
----
-
-apiVersion: v1
 kind: Service # ประเภทของ Resource
 metadata:
   name: simple-form-jenkins-service # ชื่อของ Service
