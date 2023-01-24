@@ -28,16 +28,36 @@ spec:
             - containerPort:  80
 ---
 apiVersion: v1
+kind: Service
+metadata:
+  name: myjob
+  namespace: default
+spec:
+  selector:
+    app: myjob
+  type: ClusterIP
+  ports:
+  - name: myjob
+    protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 30001
+---
+
+apiVersion: v1
 kind: Service # ประเภทของ Resource
 metadata:
   name: simple-form-jenkins-service # ชื่อของ Service
 spec:
+  selector:
+    app: simple-form-jenkins
+  type: NodePort
   ports:
-  - port: 80 # Port ของ Service
-    protocol: TCP # Protocol
-    targetPort: 80 # Port ของ container ที่จะให้ Service นั้นเชื่อมต่อ
-  selector: # ส่่วนทที่ใช้ระบุ Label ของ Pod
-    app: simple-form-jenkins # ชื่อ Label ของ Pod ที่จะให้ Service นั้นเชื่อมต่อ 
+  - name: simple-form-jenkins
+    protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 32000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress # ประเภทของ Resource
