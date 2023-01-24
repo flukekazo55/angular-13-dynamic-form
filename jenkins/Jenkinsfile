@@ -2,19 +2,14 @@ pipeline {
     agent any
 
     stages {
-        // stage('Build Docker Image') {
-        //     steps {
-        //         sh 'docker build -f angular/simple-form'
-        //     }
-        // }
-        // stage('Test') {
-        //     steps {
-        //         echo 'Testing..'
-        //     }
-        // }
-        stage('Deploy') {
+        stage('Build Docker Image') {
             steps {
-                echo 'Deploying....'
+                sh 'docker build -f angular/simple-form-jenkins:v1 -f docker/Dockerfile .'
+            }
+        }
+        stage('Deploy K8S YAML') {
+            steps {
+                sh 'kubectl -f k8s/deploy-service.yaml'
             }
         }
     }
