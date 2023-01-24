@@ -34,11 +34,14 @@ metadata:
   namespace: default
 spec:
   selector:
-    app: simple-form-jenkins #ชื่อของ angular app deployment
+    app: simple-form-jenkins
+  type: ClusterIP
   ports:
-    - protocol: TCP
-      port: 80
-      targetPort: 80
+  - name: simple-form-jenkins
+    protocol: TCP
+    port: 80
+    targetPort: 5000
+    nodePort: 31000
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
